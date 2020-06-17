@@ -1,1 +1,3 @@
 *.iml
+kapitan/lib/*
+kapitan/components/charts/*

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nfs-client-provisioner
+    chart: nfs-client-provisioner-1.2.8
+    heritage: Tiller
+    release: nfs
+  name: nfs-nfs-client-provisioner
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
+      release: nfs
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations: null
+      labels:
+        app: nfs-client-provisioner
+        release: nfs
+    spec:
+      containers:
+        - env:
+            - name: PROVISIONER_NAME
+              value: cluster.local/nfs-nfs-client-provisioner
+            - name: NFS_SERVER
+              value: 192.168.3.91
+            - name: NFS_PATH
+              value: /vsanfs/kube-dev
+          image: quay.io/external_storage/nfs-client-provisioner:v3.1.0-k8s1.11
+          imagePullPolicy: IfNotPresent
+          name: nfs-client-provisioner
+          volumeMounts:
+            - mountPath: /persistentvolumes
+              name: nfs-client-root
+      serviceAccountName: nfs-nfs-client-provisioner
+      volumes:
+        - name: nfs-client-root
+          nfs:
+            path: /vsanfs/kube-dev
+            server: 192.168.3.91

@@ -1,0 +1,16 @@
+classes:
+  - component.namespace
+parameters:
+  kapitan:
+    vars:
+      target: ${target_name}
+    dependencies:
+      - type: git
+        output_path: lib/kube
+        source: https://github.com/bitnami-labs/kube-libsonnet
+        ref: v1.14.5
+      - type: git
+        output_path: lib/kapitan
+        source: https://github.com/deepmind/kapitan
+        subdir: kapitan/lib
+        ref: v0.27.4

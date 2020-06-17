@@ -1,0 +1,18 @@
+classes:
+  - chart
+
+parameters:
+  nfs:
+    server: 192.168.1.1
+    path: /my/path
+  helm:
+    chart:
+      url: https://kubernetes-charts.storage.googleapis.com/nfs-client-provisioner-1.2.8.tgz
+      folder_name: nfs-client-provisioner
+    values:
+      nfs:
+        server: ${nfs:server}
+        path: ${nfs:path}
+      replicaCount: 3
+      storageClass:
+        name: nfs
