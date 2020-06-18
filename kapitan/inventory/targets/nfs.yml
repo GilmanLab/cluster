@@ -4,6 +4,7 @@ classes:
 
 parameters:
   target_name: nfs
+  context: kubernetes-admin@glab.dev
   nfs:
     server: 192.168.3.91
     path: /vsanfs/kube-dev
