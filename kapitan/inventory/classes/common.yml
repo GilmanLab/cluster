@@ -20,3 +20,6 @@ parameters:
         source: https://github.com/deepmind/kapitan
         subdir: kapitan/lib
         ref: v0.27.4
+    secrets:
+      awskms:
+        key: a17327d6-7440-464e-9979-afd8a4c527c5

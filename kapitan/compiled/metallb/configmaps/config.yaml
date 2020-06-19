@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  config: "address-pools:\n- name: default\n  protocol: layer2\n  addresses:\n  -\
+    \ 192.168.2.100-192.168.2.120"
+kind: ConfigMap
+metadata:
+  annotations: {}
+  labels:
+    name: config
+  name: config

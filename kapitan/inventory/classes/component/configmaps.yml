@@ -1,0 +1,10 @@
+parameters:
+  output_folders:
+    - configmaps
+  kapitan:
+    compile:
+      - output_path: configmaps
+        input_type: jsonnet
+        output_type: yaml
+        input_paths:
+          - components/configmaps/main.jsonnet

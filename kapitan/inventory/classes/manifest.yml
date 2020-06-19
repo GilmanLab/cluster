@@ -1,0 +1,16 @@
+parameters:
+  output_folders:
+    - manifests
+  manifest:
+    url: https://somewebsite.com/manifest.yml
+    filename: manifest.yml
+  kapitan:
+    dependencies:
+      - type: https
+        source: ${manifest:url}
+        output_path: components/manifests/${manifest:filename}
+    compile:
+      - input_type: copy
+        input_paths:
+          - components/manifests/${manifest:filename}
+        output_path: manifests

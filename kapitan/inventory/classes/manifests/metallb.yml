@@ -1,0 +1,7 @@
+classes:
+  - manifest
+
+parameters:
+  manifest:
+    url: https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
+    filename: metallb.yaml
