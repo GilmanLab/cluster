@@ -13,11 +13,3 @@ fetch:
      -e AWS_SECRET_ACCESS_KEY=$(AWS_SECRET_ACCESS_KEY) \
      -e AWS_ACCESS_KEY_ID=$(AWS_ACCESS_KEY_ID) \
      deepmind/kapitan compile --fetch
-
-.PHONY: secret
-secret:
-	@docker run -t --rm -v $(shell pwd):/src:delegated \
-         -e AWS_DEFAULT_REGION=$(AWS_DEFAULT_REGION) \
-         -e AWS_SECRET_ACCESS_KEY=$(AWS_SECRET_ACCESS_KEY) \
-         -e AWS_ACCESS_KEY_ID=$(AWS_ACCESS_KEY_ID) \
-         deepmind/kapitan refs --write awskms:$(path) -t $(target) -f $(secretfile)
