@@ -1,0 +1,19 @@
+classes:
+  - manifests.metallb
+  - component.secrets
+  - component.configmaps
+
+parameters:
+  secrets:
+    memberlist:
+      data:
+        secretkey: ?{awskms:targets/${target_name}/metallb/memberlist||randomstr|base64}
+  configmaps:
+    config:
+      data:
+        config: |
+          address-pools:
+          - name: default
+            protocol: layer2
+            addresses:
+            - ${environment:loadbalancer:addresses}

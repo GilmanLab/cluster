@@ -5,11 +5,6 @@ parameters:
   kapitan:
     vars:
       target: ${target_name}
-    compile:
-      - output_path: .
-        input_type: jinja2
-        input_paths:
-          - templates/scripts
     dependencies:
       - type: git
         output_path: lib/kube

@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+function help {
+    echo "Usage: deploy [flags] target_name"
+    echo ""
+    echo "Flags:"
+    echo "  -d  Delete the deployed target"
+}
+
+if [[ -z $1 ]]; then
+    help
+    exit 1
+fi
+
+if [[ "$1" = "-d" ]]; then
+    if [[ -z $2 ]]; then
+        help
+        exit 1
+    fi
+    target="$2"
+else
+    target="$1"
+fi
+
+kapitan inventory -t ${target} &> /dev/null
+if [[ $? -gt 0 ]]; then
+    echo "Invalid target: $1"
+    exit 1
+fi
+
+namespace=$(kapitan inventory -t ${target} | yq -r .parameters.namespace)
+context=$(kapitan inventory -t ${target} | yq -r .parameters.environment.context)
+
+if [[ ! -z $2 ]]; then
+    kapp delete -a ${target}
+else
+    kapp deploy -a ${target} -n default --map-ns default=${namespace} --kubeconfig-context ${context} -f compiled/${target}
+fi

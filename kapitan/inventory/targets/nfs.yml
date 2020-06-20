@@ -1,6 +1,7 @@
 classes:
   - common
   - charts.nfs-client-provisioner
+  - environments.dev
 
 parameters:
   target_name: nfs

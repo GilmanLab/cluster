@@ -1,0 +1,5 @@
+parameters:
+  environment:
+    context: kubernetes-admin@glab.dev
+    loadbalancer:
+      addresses: 192.168.2.100-192.168.2.120
