@@ -1,0 +1,8 @@
+parameters:
+  kapitan:
+    compile:
+      - output_path: clusterissuer
+        input_type: jsonnet
+        output_type: yaml
+        input_paths:
+          - components/clusterissuer/main.jsonnet

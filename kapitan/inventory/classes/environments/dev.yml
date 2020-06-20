@@ -1,5 +1,10 @@
 parameters:
   environment:
+    acme:
+      email: joshuagilman@gmail.com
+      server: https://acme-v02.api.letsencrypt.org/directory
+    cloudflare:
+      email: joshuagilman@gmail.com
     context: kubernetes-admin@glab.dev
     loadbalancer:
       addresses: 192.168.2.100-192.168.2.120

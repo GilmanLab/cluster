@@ -1,6 +1,7 @@
 classes:
   - common
   - apps.metallb
+  - component.namespace
   - environments.dev
 
 parameters:
