@@ -1,7 +1,7 @@
 parameters:
   kapitan:
     compile:
-      - output_path: pre-deploy
+      - output_path: namespace
         input_type: jsonnet
         output_type: yaml
         input_paths:

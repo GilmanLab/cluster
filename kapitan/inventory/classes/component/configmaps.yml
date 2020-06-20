@@ -1,6 +1,4 @@
 parameters:
-  output_folders:
-    - configmaps
   kapitan:
     compile:
       - output_path: configmaps

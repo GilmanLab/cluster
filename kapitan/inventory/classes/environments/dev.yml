@@ -3,3 +3,6 @@ parameters:
     context: kubernetes-admin@glab.dev
     loadbalancer:
       addresses: 192.168.2.100-192.168.2.120
+    nfs:
+      address: 192.168.3.91
+      path: /vsanfs/kube-dev

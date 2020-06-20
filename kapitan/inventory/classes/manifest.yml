@@ -1,6 +1,4 @@
 parameters:
-  output_folders:
-    - manifests
   manifest:
     url: https://somewebsite.com/manifest.yml
     filename: manifest.yml

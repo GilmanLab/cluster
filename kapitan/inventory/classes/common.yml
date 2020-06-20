@@ -1,7 +1,6 @@
 classes:
   - component.namespace
 parameters:
-  output_folders: []
   kapitan:
     vars:
       target: ${target_name}

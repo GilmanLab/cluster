@@ -34,5 +34,5 @@ context=$(kapitan inventory -t ${target} | yq -r .parameters.environment.context
 if [[ ! -z $2 ]]; then
     kapp delete -a ${target}
 else
-    kapp deploy -a ${target} -n default --map-ns default=${namespace} --kubeconfig-context ${context} -f compiled/${target}
+    kapp deploy -a ${target} -n default --map-ns default=${namespace} --map-ns ${namespace}=${namespace} --kubeconfig-context ${context} -f <(kapitan refs --reveal -f compiled/${target})
 fi

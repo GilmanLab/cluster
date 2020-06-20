@@ -1,12 +1,8 @@
 classes:
   - common
-  - charts.nfs-client-provisioner
   - environments.dev
+  - apps.nfs
 
 parameters:
   target_name: nfs
   namespace: nfs
-  context: kubernetes-admin@glab.dev
-  nfs:
-    server: 192.168.3.91
-    path: /vsanfs/kube-dev
