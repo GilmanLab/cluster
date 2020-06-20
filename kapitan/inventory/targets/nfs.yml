@@ -1,7 +1,8 @@
 classes:
   - common
-  - environments.dev
   - apps.nfs
+  - component.namespace
+  - environments.dev
 
 parameters:
   target_name: nfs

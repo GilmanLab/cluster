@@ -1,5 +1,5 @@
-classes:
-  - component.namespace
+classes: {}
+
 parameters:
   kapitan:
     vars:

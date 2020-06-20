@@ -1,0 +1,8 @@
+classes:
+  - common
+  - apps.cert-manager
+  - environments.dev
+
+parameters:
+  target_name: cert-manager
+  namespace: cert-manager
