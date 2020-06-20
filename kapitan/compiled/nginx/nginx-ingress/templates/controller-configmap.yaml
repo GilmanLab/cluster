@@ -1,0 +1,11 @@
+apiVersion: v1
+data: null
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: nginx-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.5.0
+  name: nginx-nginx-ingress
+  namespace: nginx

@@ -5,12 +5,12 @@ classes:
 
 parameters:
   issuer:
-    name: letsencrypt
+    name: ${environment:issuer:name}
     acme:
-      email: ${environment:acme:email}
-      server: ${environment:acme:server}
+      email: ${environment:issuer:acme:email}
+      server: ${environment:issuer:acme:server}
     cloudflare:
-      email: ${environment:cloudflare:email}
+      email: ${environment:issuer:cloudflare:email}
       secret:
         name: cloudflare-api-token
         key: token

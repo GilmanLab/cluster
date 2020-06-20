@@ -1,0 +1,9 @@
+classes:
+  - common
+  - apps.nginx
+  - component.namespace
+  - environments.dev
+
+parameters:
+  target_name: nginx
+  namespace: nginx

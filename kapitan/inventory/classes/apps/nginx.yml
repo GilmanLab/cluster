@@ -1,0 +1,21 @@
+classes:
+  - charts.nginx
+  - component.certificate
+
+parameters:
+  helm:
+    chart:
+      values:
+        controller:
+          wildcardTLS:
+            secret:
+              ${namespace}/${certificate:name}-tls
+  certificate:
+    name: nginx-wildcard-cert
+    common_name: '*.gilman.io'
+    dns_names:
+      - 'gilman.io'
+      - '*.gilman.io'
+    issuer:
+      name: ${environment:issuer:name}
+      type: ClusterIssuer

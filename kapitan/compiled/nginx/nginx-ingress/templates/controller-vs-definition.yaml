@@ -1,0 +1,382 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  labels:
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: nginx-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.5.0
+  name: virtualservers.k8s.nginx.org
+spec:
+  group: k8s.nginx.org
+  names:
+    kind: VirtualServer
+    plural: virtualservers
+    shortNames:
+      - vs
+    singular: virtualserver
+  preserveUnknownFields: false
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      description: VirtualServer defines the VirtualServer resource.
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: VirtualServerSpec is the spec of the VirtualServer resource.
+          properties:
+            host:
+              type: string
+            routes:
+              items:
+                description: Route defines a route.
+                properties:
+                  action:
+                    description: Action defines an action.
+                    properties:
+                      pass:
+                        type: string
+                      redirect:
+                        description: ActionRedirect defines a redirect in an Action.
+                        properties:
+                          code:
+                            type: integer
+                          url:
+                            type: string
+                        type: object
+                      return:
+                        description: ActionReturn defines a return in an Action.
+                        properties:
+                          body:
+                            type: string
+                          code:
+                            type: integer
+                          type:
+                            type: string
+                        type: object
+                    type: object
+                  errorPages:
+                    items:
+                      description: ErrorPage defines an ErrorPage in a Route.
+                      properties:
+                        codes:
+                          items:
+                            type: integer
+                          type: array
+                        redirect:
+                          description: ErrorPageRedirect defines a redirect for an
+                            ErrorPage.
+                          properties:
+                            code:
+                              type: integer
+                            url:
+                              type: string
+                          type: object
+                        return:
+                          description: ErrorPageReturn defines a return for an ErrorPage.
+                          properties:
+                            body:
+                              type: string
+                            code:
+                              type: integer
+                            headers:
+                              items:
+                                description: Header defines an HTTP Header.
+                                properties:
+                                  name:
+                                    type: string
+                                  value:
+                                    type: string
+                                type: object
+                              type: array
+                            type:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  matches:
+                    items:
+                      description: Match defines a match.
+                      properties:
+                        action:
+                          description: Action defines an action.
+                          properties:
+                            pass:
+                              type: string
+                            redirect:
+                              description: ActionRedirect defines a redirect in an
+                                Action.
+                              properties:
+                                code:
+                                  type: integer
+                                url:
+                                  type: string
+                              type: object
+                            return:
+                              description: ActionReturn defines a return in an Action.
+                              properties:
+                                body:
+                                  type: string
+                                code:
+                                  type: integer
+                                type:
+                                  type: string
+                              type: object
+                          type: object
+                        conditions:
+                          items:
+                            description: Condition defines a condition in a MatchRule.
+                            properties:
+                              argument:
+                                type: string
+                              cookie:
+                                type: string
+                              header:
+                                type: string
+                              value:
+                                type: string
+                              variable:
+                                type: string
+                            type: object
+                          type: array
+                        splits:
+                          items:
+                            description: Split defines a split.
+                            properties:
+                              action:
+                                description: Action defines an action.
+                                properties:
+                                  pass:
+                                    type: string
+                                  redirect:
+                                    description: ActionRedirect defines a redirect
+                                      in an Action.
+                                    properties:
+                                      code:
+                                        type: integer
+                                      url:
+                                        type: string
+                                    type: object
+                                  return:
+                                    description: ActionReturn defines a return in
+                                      an Action.
+                                    properties:
+                                      body:
+                                        type: string
+                                      code:
+                                        type: integer
+                                      type:
+                                        type: string
+                                    type: object
+                                type: object
+                              weight:
+                                type: integer
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                  path:
+                    type: string
+                  route:
+                    type: string
+                  splits:
+                    items:
+                      description: Split defines a split.
+                      properties:
+                        action:
+                          description: Action defines an action.
+                          properties:
+                            pass:
+                              type: string
+                            redirect:
+                              description: ActionRedirect defines a redirect in an
+                                Action.
+                              properties:
+                                code:
+                                  type: integer
+                                url:
+                                  type: string
+                              type: object
+                            return:
+                              description: ActionReturn defines a return in an Action.
+                              properties:
+                                body:
+                                  type: string
+                                code:
+                                  type: integer
+                                type:
+                                  type: string
+                              type: object
+                          type: object
+                        weight:
+                          type: integer
+                      type: object
+                    type: array
+                type: object
+              type: array
+            tls:
+              description: TLS defines TLS configuration for a VirtualServer.
+              properties:
+                redirect:
+                  description: TLSRedirect defines a redirect for a TLS.
+                  properties:
+                    basedOn:
+                      type: string
+                    code:
+                      type: integer
+                    enable:
+                      type: boolean
+                  type: object
+                secret:
+                  type: string
+              type: object
+            upstreams:
+              items:
+                description: Upstream defines an upstream.
+                properties:
+                  buffer-size:
+                    type: string
+                  buffering:
+                    type: boolean
+                  buffers:
+                    description: UpstreamBuffers defines Buffer Configuration for
+                      an Upstream.
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: string
+                    type: object
+                  client-max-body-size:
+                    type: string
+                  connect-timeout:
+                    type: string
+                  fail-timeout:
+                    type: string
+                  healthCheck:
+                    description: HealthCheck defines the parameters for active Upstream
+                      HealthChecks.
+                    properties:
+                      connect-timeout:
+                        type: string
+                      enable:
+                        type: boolean
+                      fails:
+                        type: integer
+                      headers:
+                        items:
+                          description: Header defines an HTTP Header.
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          type: object
+                        type: array
+                      interval:
+                        type: string
+                      jitter:
+                        type: string
+                      passes:
+                        type: integer
+                      path:
+                        type: string
+                      port:
+                        type: integer
+                      read-timeout:
+                        type: string
+                      send-timeout:
+                        type: string
+                      statusMatch:
+                        type: string
+                      tls:
+                        description: UpstreamTLS defines a TLS configuration for an
+                          Upstream.
+                        properties:
+                          enable:
+                            type: boolean
+                        type: object
+                    type: object
+                  keepalive:
+                    type: integer
+                  lb-method:
+                    type: string
+                  max-conns:
+                    type: integer
+                  max-fails:
+                    type: integer
+                  name:
+                    type: string
+                  next-upstream:
+                    type: string
+                  next-upstream-timeout:
+                    type: string
+                  next-upstream-tries:
+                    type: integer
+                  port:
+                    type: integer
+                  queue:
+                    description: UpstreamQueue defines Queue Configuration for an
+                      Upstream.
+                    properties:
+                      size:
+                        type: integer
+                      timeout:
+                        type: string
+                    type: object
+                  read-timeout:
+                    type: string
+                  send-timeout:
+                    type: string
+                  service:
+                    type: string
+                  sessionCookie:
+                    description: SessionCookie defines the parameters for session
+                      persistence.
+                    properties:
+                      domain:
+                        type: string
+                      enable:
+                        type: boolean
+                      expires:
+                        type: string
+                      httpOnly:
+                        type: boolean
+                      name:
+                        type: string
+                      path:
+                        type: string
+                      secure:
+                        type: boolean
+                    type: object
+                  slow-start:
+                    type: string
+                  subselector:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tls:
+                    description: UpstreamTLS defines a TLS configuration for an Upstream.
+                    properties:
+                      enable:
+                        type: boolean
+                    type: object
+                type: object
+              type: array
+          type: object
+      type: object
+  versions:
+    - name: v1
+      served: true
+      storage: true

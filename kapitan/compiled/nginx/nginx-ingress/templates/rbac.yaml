@@ -1,0 +1,93 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: nginx-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.5.0
+  name: nginx-nginx-ingress
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - services
+      - endpoints
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ''
+    resources:
+      - secrets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ''
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+      - create
+  - apiGroups:
+      - ''
+    resources:
+      - pods
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - ''
+    resources:
+      - events
+    verbs:
+      - create
+      - patch
+  - apiGroups:
+      - extensions
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - extensions
+    resources:
+      - ingresses/status
+    verbs:
+      - update
+  - apiGroups:
+      - k8s.nginx.org
+    resources:
+      - virtualservers
+      - virtualserverroutes
+      - transportservers
+    verbs:
+      - list
+      - watch
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: nginx-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.5.0
+  name: nginx-nginx-ingress
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nginx-nginx-ingress
+subjects:
+  - kind: ServiceAccount
+    name: nginx-nginx-ingress
+    namespace: nginx

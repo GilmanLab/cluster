@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: nginx-wildcard-cert
+spec:
+  commonName: '*.gilman.io'
+  dnsNames:
+    - gilman.io
+    - '*.gilman.io'
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt
+  secretName: nginx-wildcard-cert-tls

@@ -1,0 +1,8 @@
+parameters:
+  kapitan:
+    compile:
+      - output_path: certificate
+        input_type: jsonnet
+        output_type: yaml
+        input_paths:
+          - components/certificate/main.jsonnet

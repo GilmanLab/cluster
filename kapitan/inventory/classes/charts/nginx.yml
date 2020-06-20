@@ -1,0 +1,8 @@
+classes:
+  - chart
+
+parameters:
+  helm:
+    chart:
+      url: https://helm.nginx.com/stable/nginx-ingress-0.5.0.tgz
+      folder_name: nginx-ingress

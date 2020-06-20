@@ -1,0 +1,12 @@
+parameters:
+  kapitan:
+    compile:
+      - output_path: .
+        input_type: helm
+        input_paths:
+          - components/charts/cert-manager
+        helm_values:
+          installCRDs: true
+        helm_params:
+          release_name: ${target_name}
+          namespace: ${target_name}
