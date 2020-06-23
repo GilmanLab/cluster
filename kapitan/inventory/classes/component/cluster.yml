@@ -1,0 +1,27 @@
+parameters:
+  kapitan:
+    compile:
+      - output_path: cluster
+        input_type: jsonnet
+        output_type: yaml
+        input_paths:
+          - components/cluster/main.jsonnet
+      - input_type: copy
+        input_paths:
+          - lib/deploy/__main__.py
+          - lib/deploy/cluster.py
+          - lib/deploy/environment.py
+          - lib/deploy/node.py
+          - lib/deploy/Pulumi.yaml
+          - lib/deploy/requirements.txt
+        output_path: cluster
+      - input_type: copy
+        input_paths:
+          - lib/deploy/files/init.sh.j2
+          - lib/deploy/files/inventory.ini.j2
+          - lib/deploy/files/metadata.yml.j2
+        output_path: cluster/files
+    dependencies:
+      - type: git
+        output_path: lib/deploy
+        source: https://github.com/GilmanLab/deploy
