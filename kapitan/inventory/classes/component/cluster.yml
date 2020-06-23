@@ -25,3 +25,7 @@ parameters:
       - type: git
         output_path: lib/deploy
         source: https://github.com/GilmanLab/deploy
+      - type: git
+        output_path: lib/kubespray
+        source: https://github.com/kubernetes-sigs/kubespray
+        ref: v2.12.7
