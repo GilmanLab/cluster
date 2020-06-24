@@ -9,6 +9,8 @@ parameters:
     name: glab.dev
     nodes: 3
     stack: dev
+    extra_vars:
+      kube_proxy_strict_arp: true
   env:
     datacenter: Gilman
     domain: gilman.io
