@@ -9,7 +9,7 @@ ENV="{{ inventory.parameters.env.name }}"
 pulumi stack select ${STACK} -C "${tmp_dir}/deploy"
 
 echo "Bringing up ${STACK} cluster..."
-#pulumi up -y -C "${tmp_dir}/deploy"
+pulumi up -y -C "${tmp_dir}/deploy"
 
 echo "Copying sample inventory"
 cp -r "${tmp_dir}/kubespray/inventory/sample" "${tmp_dir}/kubespray/inventory/${ENV}"
@@ -23,4 +23,4 @@ EXTRA_VARS="${EXTRA_VARS}cluster_name='{{ inventory.parameters.cluster.name }}'"
 ansible-playbook -i "${tmp_dir}/kubespray/inventory/${ENV}/inventory.ini" --extra-vars="${EXTRA_VARS}" --become --become-user=root "${tmp_dir}/kubespray/cluster.yml"
 
 echo "Cleaning up..."
-#rm -rf ${tmp_dir}
+rm -rf ${tmp_dir}
