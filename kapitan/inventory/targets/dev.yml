@@ -8,6 +8,7 @@ parameters:
     masters: 1
     name: glab.dev
     nodes: 3
+    stack: dev
   env:
     datacenter: Gilman
     domain: gilman.io

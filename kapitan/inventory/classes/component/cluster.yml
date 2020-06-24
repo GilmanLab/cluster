@@ -6,21 +6,14 @@ parameters:
         output_type: yaml
         input_paths:
           - components/cluster/main.jsonnet
-      - input_type: copy
+      - output_path: cluster
+        input_type: jinja2
         input_paths:
-          - lib/deploy/__main__.py
-          - lib/deploy/cluster.py
-          - lib/deploy/environment.py
-          - lib/deploy/node.py
-          - lib/deploy/Pulumi.yaml
-          - lib/deploy/requirements.txt
-        output_path: cluster
-      - input_type: copy
+          - templates/scripts/up.sh
+      - output_path: cluster
+        input_type: jinja2
         input_paths:
-          - lib/deploy/files/init.sh.j2
-          - lib/deploy/files/inventory.ini.j2
-          - lib/deploy/files/metadata.yml.j2
-        output_path: cluster/files
+          - templates/scripts/destroy.sh
     dependencies:
       - type: git
         output_path: lib/deploy
