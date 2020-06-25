@@ -1,0 +1,7 @@
+parameters:
+  kapitan:
+    compile:
+      - input_type: jinja2
+        input_paths:
+          - templates/scripts/kube/deploy.sh
+        output_path: .

@@ -9,11 +9,11 @@ parameters:
       - output_path: cluster
         input_type: jinja2
         input_paths:
-          - templates/scripts/up.sh
+          - templates/scripts/cluster/up.sh
       - output_path: cluster
         input_type: jinja2
         input_paths:
-          - templates/scripts/destroy.sh
+          - templates/scripts/cluster/destroy.sh
     dependencies:
       - type: git
         output_path: lib/deploy

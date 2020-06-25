@@ -1,5 +1,6 @@
 classes:
   - common
+  - common-kube
   - apps.metallb
   - component.namespace
   - environments.dev

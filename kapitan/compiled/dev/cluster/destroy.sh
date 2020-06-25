@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash -eu
 
 DIR=$(dirname ${BASH_SOURCE[0]})
 STACK="dev"

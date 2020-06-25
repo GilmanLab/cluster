@@ -1,5 +1,6 @@
 classes:
   - common
+  - common-kube
   - apps.nginx
   - component.namespace
   - environments.dev

@@ -1,5 +1,6 @@
 classes:
   - common
+  - common-kube
   - apps.cert-manager
   - environments.dev
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -eu
 
 function help {
     echo "Usage: deploy [flags] target_name"
