@@ -1,5 +1,5 @@
-local kube = import '../../lib/kube/kube.libsonnet';
 local kap = import '../../lib/kapitan/kapitan.libjsonnet';
+local kube = import '../../lib/kube/kube.libsonnet';
 local inventory = kap.inventory();
 local p = inventory.parameters;
 
@@ -15,9 +15,9 @@ local p = inventory.parameters;
       commonName: p.certificate.common_name,
       dnsNames: p.certificate.dns_names,
       issuerRef: {
-        'name': p.certificate.issuer.name,
-        'kind': p.certificate.issuer.type,
-      }
-    }
-  }
+        name: p.certificate.issuer.name,
+        kind: p.certificate.issuer.type,
+      },
+    },
+  },
 }

@@ -1,5 +1,5 @@
-local kube = import '../../lib/kube/kube.libsonnet';
 local kap = import '../../lib/kapitan/kapitan.libjsonnet';
+local kube = import '../../lib/kube/kube.libsonnet';
 local inventory = kap.inventory();
 local p = inventory.parameters;
 
@@ -25,12 +25,12 @@ local p = inventory.parameters;
                 apiTokenSecretRef: {
                   name: p.issuer.cloudflare.secret.name,
                   key: p.issuer.cloudflare.secret.key,
-                }
-              }
-            }
-          }
-        ]
-      }
-    }
-  }
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  },
 }
