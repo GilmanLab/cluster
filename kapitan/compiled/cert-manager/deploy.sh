@@ -7,5 +7,5 @@ kapp deploy -a cert-manager \
     --map-ns default=cert-manager \
     --map-ns cert-manager=cert-manager \
     --map-ns kube-system=kube-system \
-    --kubeconfig-context kubernetes-admin@glab.dev \
+    --kubeconfig-context dev \
     -f <(kapitan refs --reveal -f ${DIR})

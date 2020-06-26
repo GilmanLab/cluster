@@ -7,5 +7,5 @@ kapp deploy -a nfs \
     --map-ns default=nfs \
     --map-ns nfs=nfs \
     --map-ns kube-system=kube-system \
-    --kubeconfig-context kubernetes-admin@glab.dev \
+    --kubeconfig-context dev \
     -f <(kapitan refs --reveal -f ${DIR})

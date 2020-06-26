@@ -7,7 +7,7 @@ parameters:
       cloudflare:
         email: joshuagilman@gmail.com
       name: letsencrypt
-    context: kubernetes-admin@glab.dev
+    context: dev
     loadbalancer:
       addresses: 192.168.2.100-192.168.2.120
     nfs:

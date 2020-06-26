@@ -7,5 +7,5 @@ kapp deploy -a metallb \
     --map-ns default=metallb-system \
     --map-ns metallb-system=metallb-system \
     --map-ns kube-system=kube-system \
-    --kubeconfig-context kubernetes-admin@glab.dev \
+    --kubeconfig-context dev \
     -f <(kapitan refs --reveal -f ${DIR})
