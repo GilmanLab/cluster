@@ -2,6 +2,8 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.1.0
     hooks:
+      - id: check-added-large-files
+      - id: check-executables-have-shebangs
       - id: check-yaml
         args: ['--allow-multiple-documents']
       - id: end-of-file-fixer
